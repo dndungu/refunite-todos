@@ -1,0 +1,36 @@
+{
+	"server" : {
+		"host" : "localhost",
+		"port" : 8080,
+		"secure": false
+	},
+	"database" : {
+		"host" : "127.0.0.1",
+		"port" : 27017,
+		"server_options" : {
+			"auto_reconnect" : true,
+			"poolSize" : 5,
+			"socketOptions" : {
+				"timeout" : 0,
+				"noDelay" : true,
+				"keepAlive" : 0,
+				"encoding" : "utf8"
+			}
+		},
+		"name" : "refunite",
+		"db_options" : {
+			"native_parser" : true,
+			"strict" : true,
+			"safe" : 1	
+		}
+	},
+	"cookie":{
+		"name" : "_r",
+		"age" :	3600
+	},
+	"key" : "bc03d63964bb0b48030ce7c2776893e6",
+	"debug": {
+		"level" : 3,
+		"file": "/var/log/refunite/todos.log"
+	}
+}
