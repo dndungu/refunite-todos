@@ -94,6 +94,7 @@ gereji.apps.register('todos', function(sandbox){
 			});
             model.sync();
 			target.style.display = "none";
+			console.log(stage);
 			if(options.about == "/api/todos")
 				(new gereji.query()).init('a[stage="' + stage + '"]').css({display: "block"});
             return this;
