@@ -699,9 +699,8 @@ gereji.extend('xslt', {
 		}catch(e){
 			if(!console)
 				return this;
-			console.log(this.style);
-			console.log(this.doc);
 			console.log(e);
+			console.log(e.stack);
 		}
 	},
 	getHTML: function(){
