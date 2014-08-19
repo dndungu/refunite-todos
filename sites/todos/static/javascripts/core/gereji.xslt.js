@@ -44,11 +44,13 @@ gereji.extend('xslt', {
 	},
 	transform2: function(data){
 		try{
-			this.style = this.parse(this.xsl);
+//			this.style = this.parse(this.xsl);
+			this.style = Saxon.parseXML(this.xsl);
 			this.processor = Saxon.newXSLT20Processor(this.style);
 //			this.processor.importStylesheet(this.style);
 			this.xml = this.json2xml({data : data});
-			this.doc = this.parse(this.xml);
+//			this.doc = this.parse(this.xml);
+			this.doc = Saxon.parseXML(this.xml);
 			this.html = this.processor.transformToHTMLFragment(this.doc, document);
 			return this;
 		}catch(e){
