@@ -86,7 +86,7 @@ gereji.apps.register('todos', function(sandbox){
 			model.set("hashtags", hashtags);
 			model.set("handles", handles);
 			var stage = (new gereji.query()).setElement(target).ancestor(".droppable").elements[0].id;
-			model.set("stage", stage.replace("-list", ""));
+			model.set("stage", stage.replace("-list", "").replace("-form", ""));
             sandbox.emit({type: options.name + ":sync", data: model});
 			model.broker.on("sync", function(){
 				app.render([stage]);
