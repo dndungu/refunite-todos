@@ -526,142 +526,131 @@ gereji.extend("collection", {
     }
 });
 "use strict";
-gereji.extend("dom", {
-	findId: function(id){
-		this.elements = document.getElementsById(id);
-	},
-	findTag: function(tagName){
-		this.elements = document.getElementsByTagName(tagName);
+gereji.extend("query", {
+	init: function(){
+		var query = arguments[0];
+		var context = arguments[1] ? arguments[1] : document;
+		this.elements = Sizzle(query, context);
 		return this;
-	},
-	findClass: function(className){
-		var result = [];
-		for(var i = 0; i < this.elements.length; i++){
-			var element = this.elements[i];
-			if(element.className.split(" ").indexOf(className) != -1)
-				result.push(element);			
-		}
-		this.elements = result;
-		return this;
-	},
-	findParentTag: function(parentTag){
-		var tag = this.elements[0].tagName.toLowerCase();
-		if(tag == "body")
-			this.elements = [];
-		if(tag == parentTag || tag == "body")
-			return this;
-		this.elements = [this.elements[0].parentNode];
-		return this.findParentTag(parentTag);
-	},
-	findChildrenTag: function(tag){
-		if(!this.elements.length){
-			this.elements = [];
-			return this;
-		}
-		var elements = this.elements[0].getElementsByTagName(tag);
-		this.elements = elements ? elements : [];
-		return this;
-	},
-    findNextSibling: function(){
-		var target = this.elements[0];
-        var subject = target.nextSibling ? target.nextSibling : target.parentNode.firstChild;
-        while(subject.nodeType != 1){
-			subject = subject.nextSibling ? subject.nextSibling : target.parentNode.firstChild;
-        }
-		this.elements = [subject];
-        return this;
-    },
-    findPreviousSibling: function(){
-		var target = this.elements[0];
-        var subject = target.previousSibling ? target.previousSibling : target.parentNode.lastChild;
-        while(subject.nodeType != 1){
-           subject = subject.previousSibling ? subject.previousSibling : target.parentNode.lastChild;
-        }
-		this.elements = [subject];
-        return this;
-    },
-	getElements: function(){
-		return this.elements;
 	},
     setElement: function(){
         this.elements = [arguments[0]];
         return this;
     },
-	setElements: function(){
-		this.elements = [];
-		for(var i = 0; i < arguments[0].length; i++){
-			this.elements.push(arguments[0][i]);
-		}
-		return this;
-	},
-	addClass: function(){
-		var classes = arguments[0] instanceof Array ? arguments[0] : [arguments[0]];
-		for(var i = 0; i < this.elements.length; i++){
-			for(var j in classes){
-				var className = this.elements[i].className;
-				this.elements[i].className = (className.indexOf(classes[i]) == -1) ? (className + " " + classes[i]) : className;
-			}
-		}
-		return this;
-	},
-	removeClass: function(){
-		var classes = arguments[0] instanceof Array ? arguments[0] : [arguments[0]];
-		for(var i = 0; i < this.elements.length; i++){
-			for(var j in classes){
-				this.elements[i].className = this.elements[i].className.replace(classes[j], "").replace("  ", " ");
-			}
-		}
-		return this;
-	},
-	hasClass: function(){
-		return (this.elements[0] && this.elements[0].className && this.elements[0].className.indexOf(arguments[0]) != -1)
-	},
-	append: function(){
+    ancestor: function(query){
 		if(!this.elements.length)
 			return this;
-		this.elements[0].innerHTML += arguments[0];
-	},
-	html: function(){
-        if(!this.elements.length)
-            return this;
-		this.elements[0].innerHTML = "";
-        this.elements[0].appendChild(arguments[0]);		
-	},
-	value: function(){
-		if(!arguments.length)
-			return this.elements[0].value;
-		for(var i = 0; i < this.elements.length; i++){
-			this.elements[i].value = arguments[0];
-		}
+		this.elements = [this.elements[0].parentNode];
+		if(Sizzle((">" + query), this.elements[0].parentNode).length)
+			return this;
+		return this.ancestor(query);
+    },
+	children: function(){
+		var query = arguments[0];
+		if(!this.elements.length)
+			throw new Error("There is no element to find children of.");
+		this.elements = Sizzle(query, this.elements[0]);
 		return this;
 	},
-	attribute: function(){
-		if(arguments.length == 1)
-			return this.elements[0].getAttribute(arguments[0]);
-		for(var i = 0; i < this.elements.length; i++){
-			this.elements[i].setAttribute(arguments[0], arguments[1]);
-		}
+    next: function(){
+        var target = this.elements[0];
+        var subject = target.nextSibling ? target.nextSibling : target.parentNode.firstChild;
+        while(subject.nodeType != 1){
+            subject = subject.nextSibling ? subject.nextSibling : target.parentNode.firstChild;
+        }
+        this.elements = [subject];
+        return this;
+    },
+    previous: function(){
+        var target = this.elements[0];
+        var subject = target.previousSibling ? target.previousSibling : target.parentNode.lastChild;
+        while(subject.nodeType != 1){
+           subject = subject.previousSibling ? subject.previousSibling : target.parentNode.lastChild;
+        }
+        this.elements = [subject];
+        return this;
+    },
+	each: function(then){
+        for(var i = 0; i < this.elements.length; i++){
+            then(this.elements[i]);
+        }
 		return this;
 	},
-	css: function(css){
-		for(var i = 0; i < this.elements.length; i++){
-			for(var j in css){
-				this.elements[i].style[j] = css[j];
+    hasClass: function(){
+		if(this.elements.length)
+			return (this.elements[0].className.indexOf(arguments[0]) != -1);
+		else
+			return false;
+    },
+    addClass: function(){
+        var classes = arguments[0] instanceof Array ? arguments[0] : [arguments[0]];
+		this.each(function(element){
+			for(var i in classes){
+				if(element.className.indexOf(classes[i]) == -1)
+					element.className += " " + classes[i];
 			}
-		}
+		});
+        return this;
+    },
+    removeClass: function(){
+        var classes = arguments[0] instanceof Array ? arguments[0] : [arguments[0]];
+		this.each(function(element){
+			for(var i in classes){
+				element.className = element.className.replace(classes[i], "").replace(/\s\s/g, ' ');
+			}
+		});
+        return this;
+    },
+    appendChild: function(node){
+		this.each(function(element){
+			element.appendChild(node);
+		});
+		return this;
+    },
+	html: function(html){
+		if(!html)
+			return this.elements.length ? this.elements[0].innerHTML : null;
+		this.each(function(element){
+			element.innerHTML = html;
+		});
 		return this;
 	},
-	remove: function(){
-        if(!this.elements.length)
-            return this;
-		this.elements[0].parentNode.removeChild(this.elements[0]);		
+    innerHTML: function(html){
+		this.each(function(element){
+	        element.innerHTML = html;
+		});
 		return this;
-	},
-	each: function(callback){
-		for(var i = 0; i < this.elements.length; i++){
-			callback(this.elements[i]);
-		}
-	}
+    },
+    value: function(value){
+        if(!value)
+            return this.elements.length ? this.elements[0].value : null;
+		this.each(function(element){
+            element.value = value;
+		});
+        return this;
+    },
+    attribute: function(name, value){
+        if(arguments.length == 1)
+            return this.elements[0].getAttribute(name);
+		this.each(function(element){
+			element.setAttribute(name, value);
+		});
+        return this;
+    },
+    css: function(css){
+		this.each(function(element){
+			for(var i in css){
+				element.style[i] = css[i];
+			}
+		});
+        return this;
+    },
+    remove: function(){
+		this.each(function(element){
+			element.remove();
+		});
+        return this;
+    }
 });
 "use strict";
 gereji.extend('xslt', {
