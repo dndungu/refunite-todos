@@ -69,6 +69,7 @@ gereji.extend('xslt', {
 		try{
 			return ((new DOMParser).parseFromString(arguments[0], "application/xml"));
 		}catch(e){
+			console && console.log(e);
 			var doc = document.implementation.createHTMLDocument("");
 			doc.documentElement.innerHTML = arguments[0];
 			return doc;
