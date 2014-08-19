@@ -85,18 +85,17 @@ gereji.apps.register('todos', function(sandbox){
 			var handles = model.get("todo").match(/(@[\w]*)/g);
 			if(handles)
 				model.set("handles", handles.join(",").replace(/@/g, '').split(','));
-			var stage = (new gereji.query()).setElement(target).ancestor(".droppable").elements[0].id;
-			model.set("stage", stage.replace("-list", "").replace("-form", ""));
+			var stage = (new gereji.query()).setElement(target).ancestor(".droppable").elements[0].id.replace("-list", "").replace("-form", "");
+			model.set("stage", stage);
             sandbox.emit({type: options.name + ":sync", data: model});
 			model.broker.on("sync", function(){
-				app.render([stage]);
+				app.render([stage+"-list"]);
 				target.remove();
 			});
             model.sync();
 			target.style.display = "none";
-			console.log(stage);
 			if(options.about == "/api/todos")
-				(new gereji.query()).init('a[stage="' + stage + '"]').css({display: "block"});
+				(new gereji.query()).init('a[stage="' + stage + '-list"]').css({display: "block"});
             return this;
         },
         parse: function(tags, target, model){
