@@ -691,7 +691,7 @@ gereji.extend('xslt', {
 	transform: function(data){
 		try{
 			this.style = this.parse(this.xsl);
-			this.processor.importStylesheet(this.xsl);
+			this.processor.importStylesheet(this.style);
 			this.xml = this.json2xml({data : data});
 			this.doc = this.parse(this.xml);
 			this.html = this.processor.transformToFragment(this.doc, document);
@@ -701,6 +701,10 @@ gereji.extend('xslt', {
 				return this;
 			console.log(e);
 			console.log(e.stack);
+			console.log();
+			var s = new XMLSerializer();
+			console.log(s.serializeToString(this.style));
+			console.log(s.serializeToString(this.doc));
 		}
 	},
 	getHTML: function(){
