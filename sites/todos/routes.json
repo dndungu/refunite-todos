@@ -22,11 +22,11 @@
             {
                 "app" : "oauth",
                 "handler" : "avatar",
-                "permissions" : ["public.permission"],
+                "permissions" : ["user.permission"],
                 "cache" : 3600
             }
         ],
-        "permissions": ["public.permission"],
+        "permissions": ["user.permission"],
         "sync": true
     },
     {
@@ -57,11 +57,11 @@
             {
                 "app": "generic",
                 "handler": "rest",
-                "permissions": ["public.permission"],
+                "permissions": ["user.permission"],
                 "cache": 10
             }
         ],
-        "permissions": ["public.permission"],
+        "permissions": ["user.permission"],
         "parameters": {"store": "public/settingss"},
         "sync": false
     },
