@@ -71,7 +71,11 @@
 				<script src="/static/javascripts/src/dashboard-0.0.1.js"></script>
 				<script src="/static/javascripts/lib/jquery-sizzle/sizzle.min.js"></script>
 				<script src="/static/javascripts/lib/saxon/Saxonce/Saxonce.nocache.js"></script>
-				<script type="text/javascript">gereji.apps.boot();</script>
+				<script type="text/javascript">
+					var onSaxonLoad = function(){
+						gereji.apps.boot();
+					};
+				</script>
 			</body>
 		</html>
   </xsl:template>
