@@ -57,7 +57,8 @@ gereji.extend('sync', {
 			script.readyState
 				? 
 					script.onreadystatechange = function(){
-						if(script.readyState != "loaded" && script.readyState != "complete") return;
+						if(script.readyState != "loaded" && script.readyState != "complete")
+							return;
 						then();
 						script.onreadystatechange = null;
 					}
