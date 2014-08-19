@@ -34,9 +34,11 @@ gereji.extend('xslt', {
 	},
 	transform: function(data){
 		this.style = this.parse(this.xsl);
+		console.log(this.style);
 		this.processor.importStylesheet(this.style);
 		this.xml = this.json2xml({data : data});
 		this.doc = this.parse(this.xml);
+		console.log(this.doc);
 		this.html = this.processor.transformToFragment(this.doc, document);
 		return this;
 	},
