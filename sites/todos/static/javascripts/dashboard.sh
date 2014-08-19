@@ -11,7 +11,7 @@ cat $ROOT"/core/gereji.validator.js" >> $JS
 cat $ROOT"/core/gereji.transition.js" >> $JS
 cat $ROOT"/core/gereji.model.js" >> $JS
 cat $ROOT"/core/gereji.collection.js" >> $JS
-cat $ROOT"/core/gereji.dom.js" >> $JS
+cat $ROOT"/core/gereji.query.js" >> $JS
 cat $ROOT"/core/gereji.xslt.js" >> $JS
 cat $ROOT"/core/gereji.view.js" >> $JS
 cat $ROOT"/core/gereji.view.form.js" >> $JS
