@@ -40,7 +40,7 @@ gereji.extend('broker', {
 			}
 			return this;
 		}catch(e){
-			console && console.error(e.stack);
+			console && console.log(e.stack);
 		}
 	}
 });
