@@ -11,7 +11,6 @@ module.exports = {
 				throw new Error("You are not allowed access to this resource.");
 			if(sandbox._id)
 				model.query._id = sandbox._id;
-			console.log(model.query);
 			model.collection.find(model.query).sort({creation_time: -1}).toArray(function(error, items){
 				if(!error)
 					return sandbox.data(items).end();
