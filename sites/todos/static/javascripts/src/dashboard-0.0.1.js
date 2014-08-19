@@ -689,12 +689,20 @@ gereji.extend('xslt', {
 		return this;
 	},
 	transform: function(data){
-		this.style = this.parse(this.xsl);
-		this.processor.importStylesheet(this.style);
-		this.xml = this.json2xml({data : data});
-		this.doc = this.parse(this.xml);
-		this.html = this.processor.transformToFragment(this.doc, document);
-		return this;
+		try{
+			this.style = this.parse(this.xsl);
+			this.processor.importStylesheet(this.style);
+			this.xml = this.json2xml({data : data});
+			this.doc = this.parse(this.xml);
+			this.html = this.processor.transformToFragment(this.doc, document);
+			return this;
+		}catch(e){
+			if(!console)
+				return this;
+			console.log(this.style);
+			console.log(this.doc);
+			console.log(e);
+		}
 	},
 	getHTML: function(){
 		return this.html;
