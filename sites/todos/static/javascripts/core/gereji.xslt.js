@@ -46,9 +46,9 @@ gereji.extend('xslt', {
 			console.log(e);
 			console.log(e.stack);
 			console.log();
-			var s = new XMLSerializer();
-			console.log(s.serializeToString(this.style));
-			console.log(s.serializeToString(this.doc));
+//			var s = new XMLSerializer();
+//			console.log(s.serializeToString(this.style));
+//			console.log(s.serializeToString(this.doc));
 		}
 	},
 	getHTML: function(){
