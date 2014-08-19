@@ -666,7 +666,7 @@ gereji.extend('xslt', {
 		this.sync.init();
 		this.storage = new gereji.storage();
 		this.storage.init();
-		this.processor = new XSLTProcessor();
+//		this.processor = new XSLTProcessor();i
 		return this;
 	},
 	ready: function(){
@@ -688,20 +688,30 @@ gereji.extend('xslt', {
 		});
 		return this;
 	},
-	transform: function(data){
+	transform: function(){
+		try{
+			
+		}catch(e){
+            if(!console)
+                return this;
+            console.log(e);
+            console.log(e.stack);
+		}
+	},
+	transform2: function(data){
 		try{
 			this.style = this.parse(this.xsl);
-			this.processor.importStylesheet(this.style);
+			this.processor = Saxon.newXSLT20Processor(this.style);
+//			this.processor.importStylesheet(this.style);
 			this.xml = this.json2xml({data : data});
 			this.doc = this.parse(this.xml);
-			this.html = this.processor.transformToFragment(this.doc, document);
+			this.html = this.processor.transformToHTMLFragment(this.doc, document);
 			return this;
 		}catch(e){
 			if(!console)
 				return this;
 			console.log(e);
 			console.log(e.stack);
-			console.log();
 //			var s = new XMLSerializer();
 //			console.log(s.serializeToString(this.style));
 //			console.log(s.serializeToString(this.doc));
