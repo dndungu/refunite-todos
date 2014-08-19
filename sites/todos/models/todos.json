@@ -2,6 +2,7 @@
 	"name": "todo",
 	"storage": "local",
 	"inherits": ["generic.json"],
+	"permission": {"mode": "0"},
 	"fields": [
 			{
 				"name": "todo",

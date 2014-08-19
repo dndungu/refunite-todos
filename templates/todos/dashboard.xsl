@@ -32,7 +32,7 @@
 				<header>
 					<section>
 						<section class="grid4">
-							<h1 class="logo" style="background-image:url('/static/images/zezebox-logo.png')">zezebox</h1>
+							<a href="/"><h1 class="logo" style="background-image:url('/static/images/zezebox-logo.png')">zezebox</h1></a>
 						</section>
 						<section class="grid12 text-right">
 							<nav class="half-space-top">
