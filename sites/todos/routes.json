@@ -78,5 +78,67 @@
         ],
         "permissions": ["public.permission"],
         "sync": true
+    },
+    {
+        "matches": ["/oauth/connect/<network>/<next>"],
+        "type": ["text"],
+        "apps": [
+            {
+                "app": "oauth",
+                "handler": "connect",
+                "permissions": ["public.permission"],
+                "cache": 0
+            }
+        ],
+        "permissions": ["public.permission"],
+        "sync": true
+    },
+    {
+        "matches": ["/oauth/connect-twitter/<next>"],
+        "type": ["text"],
+        "apps": [
+            {
+                "app": "oauth",
+                "handler": "connect-twitter",
+                "permissions": ["public.permission"],
+                "cache": 0
+            }
+        ],
+        "permissions": ["public.permission"],
+        "sync": true
+    },
+    {
+        "matches": ["/oauth/callback/<network>/<next>"],
+        "type": "text",
+        "apps": [
+            {
+                "app": "oauth",
+                "handler": "signup",
+                "permissions": ["public.permission"],
+                "cache": 0
+            }
+        ],
+        "permissions": ["public.permission"],
+        "parameters": {
+            "redirect": "/dashboard"
+        },
+        "sync": true
+    },
+    {
+        "matches": ["/oauth/callback-twitter/<next>"],
+        "type": "text",
+        "apps": [
+            {
+                "app": "oauth",
+                "handler": "signup-twitter",
+                "permissions": ["public.permission"],
+                "cache": 0
+            }
+        ],
+        "permissions": ["public.permission"],
+        "parameters": {
+            "redirect": "/dashboard"
+        },
+        "sync": true
     }
 ]
