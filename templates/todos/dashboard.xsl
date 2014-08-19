@@ -32,7 +32,7 @@
 				<header>
 					<section>
 						<section class="grid4">
-							<h1 class="logo" style="background-image:url('http://static.tumblr.com/38268994e866d2ff8a65f4e0ac581d5a/h7mcdlm/rTMn443cb/tumblr_static_choek05a1y0c0w088oooowwc4.png')">zezebox</h1>
+							<h1 class="logo" style="background-image:url('/static/images/zezebox-logo.png')">zezebox</h1>
 						</section>
 						<section class="grid12 text-right">
 							<nav class="half-space-top">

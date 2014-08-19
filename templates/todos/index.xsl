@@ -23,16 +23,16 @@
           <section class="container clearfix">
             <h1 class="pull-left">
               <a href="/" class="pull-left">
-                <img src="/static/images/logo-0.0.1.png" height="48" class="logo pull-left" alt="RefUnite" />
+                <img src="/static/images/zezebox-logo.png" height="48" class="logo pull-left" alt="zezebox" />
               </a>
             </h1>
             <nav class="pull-right">
               <ul class="navigation-horizontal">
                 <li>
-                  <a href="https://www.refunite.org">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="http://refunite.tumblr.com">Blog</a>
+                  <a href="/api">API</a>
                 </li>
               </ul>
             </nav>
