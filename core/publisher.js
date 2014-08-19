@@ -32,7 +32,7 @@ var _private = {
 				return _private.transform(context, content);
 				break;
 			case "text":
-				data.push(content);
+				data.push(JSON.stringify(content));
 				break;
 			case "json":
 				data.push(JSON.stringify(content, null, 4));
