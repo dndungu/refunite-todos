@@ -15,7 +15,7 @@
         <meta property="og:locale" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="//d3o8xgeetvcpmn.cloudfront.net/themes/default/default.min-0.0.2.css" rel="stylesheet" type="text/css" />
-        <link href="/static/style.css" rel="stylesheet" type="text/css" />
+        <link href="/static/style.min-0.0.1.css" rel="stylesheet" type="text/css" />
         <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon" />
       </head>
       <body class="color-one">

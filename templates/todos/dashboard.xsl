@@ -3,29 +3,9 @@
   <xsl:template match="/">
 		<html>
 			<head>
-				<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'/>
 				<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
 				<link href="//d3o8xgeetvcpmn.cloudfront.net/themes/default/default.min-0.0.2.css" rel="stylesheet" type="text/css" />
-				<link href="/static/dashboard.css" rel="stylesheet" type="text/css"/>
-				<script src="//localhost/ui/javascripts/core/gereji.js"></script>
-				<script src="/static/javascripts/core/gereji.broker.js"></script>
-				<script src="/static/javascripts/core/gereji.sync.js"></script>
-				<script src="/static/javascripts/core/gereji.storage.js"></script>
-				<script src="/static/javascripts/core/gereji.transition.js"></script>
-				<script src="/static/javascripts/core/gereji.xslt.js"></script>
-				<script src="/static/javascripts/core/gereji.collection.js"></script>
-				<script src="/static/javascripts/core/gereji.model.js"></script>
-				<script src="/static/javascripts/core/gereji.view.js"></script>
-				<script src="/static/javascripts/core/gereji.view.form.js"></script>
-				<script src="/static/javascripts/core/gereji.view.list.js"></script>
-				<script src="/static/javascripts/core/gereji.validator.js"></script>
-				<script src="/static/javascripts/core/gereji.query.js"></script>
-				<script src="/static/javascripts/core/gereji.os.js"></script>
-				<script src="/static/javascripts/apps/events.js"></script>
-				<script src="/static/javascripts/apps/draggable.js"></script>
-				<script src="/static/javascripts/apps/collapsible.js"></script>
-				<script src="/static/javascripts/apps/todos.js"></script>
-				<script src="/static/javascripts/lib/jquery-sizzle/sizzle.min.js"></script>
+				<link href="/static/dashboard.min-0.0.1.css" rel="stylesheet" type="text/css"/>
 				<title>todos app</title>
 			</head>
 			<body class="text-left">
@@ -88,6 +68,8 @@
 					</section>
 				</main>
 				<footer></footer>
+				<script src="/static/javascripts/bin/dashboard.min-0.0.1.js"></script>
+				<script src="/static/javascripts/lib/jquery-sizzle/sizzle.min.js"></script>
 				<script type="text/javascript">gereji.apps.boot();</script>
 			</body>
 		</html>
