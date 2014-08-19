@@ -32,7 +32,7 @@
                   <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="/api">API</a>
+                  <a href="https://github.com/dnjuguna/refunite-todos">Source</a>
                 </li>
               </ul>
             </nav>
