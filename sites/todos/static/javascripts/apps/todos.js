@@ -95,7 +95,7 @@ gereji.apps.register('todos', function(sandbox){
             model.sync();
 			target.style.display = "none";
 			if(options.about == "/api/todos")
-				(new gereji.query()).init('a[stage="' + stage + '-list"]').css({display: "block"});
+				(new gereji.query()).init('a[stage="' + stage + '-form"]').css({display: "block"});
             return this;
         },
         parse: function(tags, target, model){
