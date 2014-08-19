@@ -10,7 +10,6 @@ gereji.extend('xslt', {
 		this.sync.init();
 		this.storage = new gereji.storage();
 		this.storage.init();
-//		this.processor = new XSLTProcessor();i
 		return this;
 	},
 	ready: function(){
@@ -34,24 +33,17 @@ gereji.extend('xslt', {
 	},
 	transform: function(data){
 		try{
-//			this.style = this.parse(this.xsl);
 			this.style = Saxon.parseXML(this.xsl);
 			this.processor = Saxon.newXSLT20Processor(this.style);
-//			this.processor.importStylesheet(this.style);
 			this.xml = this.json2xml({data : data});
-//			this.doc = this.parse(this.xml);
 			this.doc = Saxon.parseXML(this.xml);
 			this.html = this.processor.transformToFragment(this.doc, document);
-			console.log(this.html);
 			return this;
 		}catch(e){
 			if(!console)
 				return this;
 			console.log(e);
 			console.log(e.stack);
-//			var s = new XMLSerializer();
-//			console.log(s.serializeToString(this.style));
-//			console.log(s.serializeToString(this.doc));
 		}
 	},
 	getHTML: function(){
