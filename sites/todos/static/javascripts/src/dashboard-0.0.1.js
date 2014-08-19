@@ -688,17 +688,7 @@ gereji.extend('xslt', {
 		});
 		return this;
 	},
-	transform: function(){
-		try{
-			
-		}catch(e){
-            if(!console)
-                return this;
-            console.log(e);
-            console.log(e.stack);
-		}
-	},
-	transform2: function(data){
+	transform: function(data){
 		try{
 //			this.style = this.parse(this.xsl);
 			this.style = Saxon.parseXML(this.xsl);
