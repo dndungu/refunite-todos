@@ -80,11 +80,11 @@ gereji.apps.register('todos', function(sandbox){
             if(!app.parse(["textarea"], target, model))
                 return this;
 			var hashtags = model.get("todo").match(/(#[\w]*)/g);
-			hashtags = hashtags.join(",").replace(/#/g, '').split(',');
+			if(hashtags)
+				model.set("hashtags", hashtags.join(",").replace(/#/g, '').split(','));
 			var handles = model.get("todo").match(/(@[\w]*)/g);
-			handles = handles.join(",").replace(/@/g, '').split(',');
-			model.set("hashtags", hashtags);
-			model.set("handles", handles);
+			if(handles)
+				model.set("handles", handles.join(",").replace(/@/g, '').split(','));
 			var stage = (new gereji.query()).setElement(target).ancestor(".droppable").elements[0].id;
 			model.set("stage", stage.replace("-list", "").replace("-form", ""));
             sandbox.emit({type: options.name + ":sync", data: model});
