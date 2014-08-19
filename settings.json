@@ -30,7 +30,7 @@
 	},
 	"key" : "bc03d63964bb0b48030ce7c2776893e6",
 	"debug": {
-		"level" : 3,
+		"level" : 5,
 		"file": "/var/log/refunite/todos.log"
 	}
 }

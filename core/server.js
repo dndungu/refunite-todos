@@ -44,8 +44,6 @@ var _private = {
 		var broker = new (require('../utilities/broker.js'));
 		broker.set("context", context);
 		context.set("user", (new (require('../utilities/user.js'))));
-		var rest = new (require('../utilities/rest.js'));
-		rest.init(context);
 		var encryption = new (require('../utilities/encryption.js'));
 		encryption.init(context);
 		context.set("encryption", encryption);

@@ -1,0 +1,82 @@
+[
+    {
+        "matches": ["/"],
+        "type" : "html",
+        "stylesheet" : "index.xsl",
+        "apps" : [
+            {
+                "app" : "oauth",
+                "handler" : "avatar",
+                "permissions" : ["public.permission"],
+                "cache" : 3600
+            }
+        ],
+        "permissions": ["public.permission"],
+        "sync": true
+    },
+    {
+        "matches": ["/dashboard"],
+        "type" : "html",
+        "stylesheet" : "dashboard.xsl",
+        "apps" : [
+            {
+                "app" : "oauth",
+                "handler" : "avatar",
+                "permissions" : ["public.permission"],
+                "cache" : 3600
+            }
+        ],
+        "permissions": ["public.permission"],
+        "sync": true
+    },
+    {
+        "matches": ["/sign-out"],
+        "type" : "html",
+        "stylesheet" : "index.xsl",
+        "apps" : [
+            {
+                "app" : "oauth",
+                "handler" : "avatar",
+                "permissions" : ["public.permission"],
+                "cache" : 0
+            },
+            {
+                "app" : "user",
+                "handler" : "signout",
+                "permissions" : ["public.permission"],
+                "cache" : 0
+            }
+        ],
+        "permissions": ["public.permission"],
+        "sync": true
+    },
+    {
+        "matches": ["/api/<model>/<_id>", "/api/<model>"],
+        "type": "json",
+        "apps" : [
+            {
+                "app": "generic",
+                "handler": "rest",
+                "permissions": ["public.permission"],
+                "cache": 10
+            }
+        ],
+        "permissions": ["public.permission"],
+        "parameters": {"store": "public/settingss"},
+        "sync": false
+    },
+    {
+        "matches": ["/static/<path>"],
+        "type": "json",
+        "apps" : [
+            {
+                "app": "website",
+                "handler": "static",
+                "permissions": ["public.permission"],
+                "cache": 3600
+            }
+        ],
+        "permissions": ["public.permission"],
+        "sync": true
+    }
+]

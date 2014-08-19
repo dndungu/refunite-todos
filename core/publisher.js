@@ -29,8 +29,7 @@ var _private = {
 				data.push(_private.toXML(content));
 				break;
 			case "html":
-				_private.transform(context, content);
-				return this;
+				return _private.transform(context, content);
 				break;
 			case "text":
 				data.push(content);
@@ -100,11 +99,10 @@ var _private = {
 		var xml = new (require('stream'));
 		xml.pipe = function(reader){
 			reader.write(_private.toXML(content));
-			reader.write(null);
+			reader.end();
 			return reader;
 		};
 		var xsl = this.xsl(context);
-		var xml = fs.createReadStream(context.get("settings").path + "gorilla-14.xml", {encoding: "utf8"});
 		var xslt = saxon(jar, xsl, { timeout : 5000 });
 		switch(context.header("Content-Encoding")){
 			case "gzip":

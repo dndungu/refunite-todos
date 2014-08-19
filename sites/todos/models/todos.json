@@ -1,0 +1,28 @@
+{
+	"name": "todo",
+	"storage": "local",
+	"inherits": ["generic.json"],
+	"fields": [
+			{
+				"name": "todo",
+				"type": "string",
+				"length": 256,
+				"validation": ["required", "string"]
+			},
+            {
+                "name": "stage",
+                "type": "string",
+                "length": 32
+            },
+            {
+                "name": "hashtags",
+                "type": "string.collection",
+                "length": 32
+            },
+            {
+                "name": "handles",
+                "type": "string.collection",
+                "length": 32
+            }
+		]
+}

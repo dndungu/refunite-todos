@@ -1,0 +1,31 @@
+{
+	"name": "role",
+	"fields": [
+		{
+			"name": "_id",
+			"type": "string",
+			"length": 36,
+			"validation": ["uuid", "required"],
+			"generate": {"operation" : "insert", "type": "uuid", "overwrite": false}
+		},
+		{
+			"name": "author",
+			"type": "string",
+			"length": 36,
+			"validation": ["required", "string"]
+		},
+		{
+			"name": "creation_time",
+			"type": "positiveinteger",
+			"length": 13,
+			"generate":	{"operation" : "insert", "type": "timestamp"}
+		},
+		{
+			"name": "update_time",
+			"type": "positiveinteger",
+			"length": 13,
+			"generate":	{"operation" : "update", "type": "timestamp"}
+		}
+	],
+	"autonomous": false
+}

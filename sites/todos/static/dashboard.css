@@ -1,0 +1,180 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight:400;
+}
+
+body {
+	font-family:'Open Sans', arial, sans-serif;
+	font-weight:300;
+	background-color:ThreeDHighlight;
+	color:#333;
+}
+
+main section {
+	padding:0 8px;
+}
+
+header>section:first-child {
+	width:99%;
+	margin:0 .5%;
+	text-transform:uppercase;
+	height:48px;
+}
+
+header>section:first-child,
+header>section:first-child a {
+	color:#2C3E50;
+	background:#ECF0F1;
+}
+
+header>section:last-child {
+	margin-top:8px;
+}
+
+header>section:last-child li {
+    height:48px;
+	padding:12px 0 8px 16px;
+	background-color:#fff;
+}
+
+main>section {
+	background-color:#fff;
+}
+
+main section .droppable {
+	height:480px;
+}
+
+article.critical, article.high, article.normal {
+	cursor:move;
+}
+
+.logo {
+	padding:0;
+	margin:8px 8px;
+	color:transparent;
+	height:32px;
+	width:100%;
+	background:0 0 scroll no-repeat transparent;
+	background-size:contain;
+}
+
+.critical,
+.high,
+.normal,
+.low {
+	color:#000;
+}
+
+.critical {
+	background-color:#f41c54;
+}
+.high {
+	background-color:#fbd506;
+}
+.normal {
+	background-color:#00aab5;
+}
+
+.low {
+	background-color:#a8bf12;
+}
+.dragover {
+	background-color:#3dc1c9;
+	background-color:#b9e9ec;
+}
+.round-corners {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.one-of-four {
+	float:left;
+	margin-left:.5%;
+	margin-right:.5%;
+	width:24%;
+}
+main>section.grid4:first-child,header>section:last-child ul>li.grid4:first-child {
+	margin-left:.5%;
+}
+
+main h4 {
+	font-weight:300;
+}
+
+main .notes {
+	color:#000;
+	font-size:.75em;
+}
+
+main article {
+	margin:8px 0 0;
+	padding:4px 8px;
+}
+
+main article input {
+	background:transparent;
+	border:1px solid ThreeDHighlight;
+}
+
+main article button {
+	border:1px solid #000;
+	background:#000;
+	color:#fff;
+}
+
+.collapsible {
+	overflow:hidden;
+	line-height:1.25em;
+}
+
+.collapsible .fa {
+	cursor:default;
+	display:none;
+}
+
+.collapsible p {
+	padding:0 0 .5em 0;
+}
+
+.collapsible-close .fa-caret-right {
+	display:inline-block;
+	padding:0 .5em;
+}
+
+.collapsible-close {
+	height:1.75em;
+}
+
+.collapsible-open .fa-caret-down {
+	display:inline-block;
+	padding:0 .5em;
+}
+.collapsible-open {
+	height:auto;
+}
+
+.avatar {
+	width:32px;
+	height:32px;
+	display:inline-block;
+	background-position:center center;
+}
+
+p .avatar {
+	width:24px;
+	height:24px;
+}
+
+.add-item {
+	border:2px dashed #e8e8e8;
+	color:#888;
+	margin:.5em 0;
+	padding:.25em 0;
+	cursor:default;
+}
