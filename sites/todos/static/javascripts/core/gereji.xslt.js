@@ -51,7 +51,7 @@ gereji.extend('xslt', {
 			this.xml = this.json2xml({data : data});
 //			this.doc = this.parse(this.xml);
 			this.doc = Saxon.parseXML(this.xml);
-			this.html = this.processor.transformToHTMLFragment(this.doc, document);
+			this.html = this.processor.transformToFragment(this.doc, document);
 			return this;
 		}catch(e){
 			if(!console)
