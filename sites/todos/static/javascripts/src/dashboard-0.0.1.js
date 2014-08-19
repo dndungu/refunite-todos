@@ -680,10 +680,9 @@ gereji.extend('xslt', {
 		var url = "/static/" + this.options.type + "/" + this.options.name + ".xsl";
 		var that = this;
 		this.sync.get(url, function(xsl, xhr){
-			console.log(xhr.responseXML);
-			that.xsl = xsl;
+			that.xsl = xhr.responseXML;
 			var templates = that.storage.get("templates");
-			templates[that.name] = xsl;
+			templates[that.name] = that.xsl;
 			that.storage.set("templates", templates);
 			that.broker.emit({type: "update", data: null});
 		});
@@ -691,8 +690,8 @@ gereji.extend('xslt', {
 	},
 	transform: function(data){
 		try{
-			this.style = this.parse(this.xsl);
-			this.processor.importStylesheet(this.style);
+//			this.style = this.parse(this.xsl);
+			this.processor.importStylesheet(this.xsl);
 			this.xml = this.json2xml({data : data});
 			this.doc = this.parse(this.xml);
 			this.html = this.processor.transformToFragment(this.doc, document);
