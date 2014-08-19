@@ -140,7 +140,7 @@ module.exports = function(){
 		},
 		restrict: function(){
 			this.query = {};
-			var permissions = {find: 0, update: 1, remove: 2};
+			var permissions = {find: 1, update: 2, remove: 3};
 			var author = this.user.get("_id");
 			if(this.getPermissionMode() < permissions[this.sandbox.operation])
 				this.query = {author : author};
