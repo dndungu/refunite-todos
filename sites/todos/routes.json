@@ -30,7 +30,22 @@
         "sync": true
     },
     {
-        "matches": ["/sign-out"],
+        "matches": ["/signin"],
+        "type" : "html",
+        "stylesheet" : "index.xsl",
+        "apps" : [
+            {
+                "app" : "oauth",
+                "handler" : "avatar",
+                "permissions" : ["public.permission"],
+                "cache" : 3600
+            }
+        ],
+        "permissions": ["public.permission"],
+        "sync": true
+    },
+    {
+        "matches": ["/signout"],
         "type" : "html",
         "stylesheet" : "index.xsl",
         "apps" : [

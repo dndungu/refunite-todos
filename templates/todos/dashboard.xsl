@@ -38,7 +38,7 @@
 							<nav class="half-space-top">
 								<ul class="space-right">
 									<li>
-										<a href="/sign-out">Sign Out</a>
+										<a href="/signout">Sign Out</a>
 									</li>
 								</ul>	
 						</nav>
