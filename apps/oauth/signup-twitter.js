@@ -23,16 +23,18 @@ module.exports = {
 			form: form,
 			end: function(data){
 				var user = querystring.parse(data);
+				var self = this;
 				twitter.process(user, function(error){
 					if(error)
-						return sandbox.end() && sandbox.context.log(3, error);
+						return self.error(error);
 					var next = "/" + twitter.next();
 					sandbox.context.header("Location", next).statusCode(302);
 					sandbox.data("Found").end();
 				});
 			},
 			error: function(error){
-				sandbox.end(error);
+				sandbox.context.log(3, error);
+				sandbox.data({error:error}).end();
 			}
 		});
 	}
