@@ -19,7 +19,8 @@ module.exports = {
 			})
 		}catch(error){
 			sandbox.context.log(2, error.stack);
-			sandbox.data({error: error.stack});
+			sandbox.context.statusCode(404);
+			sandbox.data({error: "Could not find the resource"});
 			sandbox.end();
 		}
 	},
@@ -41,7 +42,7 @@ module.exports = {
 		}catch(error){
 			sandbox.context.log(2, error.toString());
 			sandbox.context.statusCode(503);
-			sandbox.data({error: error.toString()});
+			sandbox.data({error: "There was a problem while processing your request."});
 			sandbox.end();
 		}
 	},
@@ -64,11 +65,14 @@ module.exports = {
 			});
 		}catch(error){
 			sandbox.context.log(2, error.toString());
-			sandbox.data({error: error.toString()});
+            sandbox.context.statusCode(503);
+            sandbox.data({error: "There was a problem while processing your request."});
 			sandbox.end();
 		}
 	},
 	"put": function(sandbox){
-		//TODO
+            sandbox.context.statusCode(404);
+            sandbox.data({error: "Could not find the resource"});
+            sandbox.end();		
 	}
 };
