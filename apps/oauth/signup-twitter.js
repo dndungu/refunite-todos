@@ -7,8 +7,8 @@ module.exports = {
 		var _t = cookie ? querystring.parse(sandbox.context.get("encryption").decrypt(cookie)) : {};
 		var thatToken = _t.oauth_token;
 		var thisToken = query.oauth_token;
-		if(thatToken != thisToken)
-			return sandbox.context.log("Twitter tokens not matching") && sandbox.context.statusCode(400) && sandbox.end("Bad request");
+//		if(thatToken != thisToken)
+//			return sandbox.context.log("Twitter tokens not matching") && sandbox.context.statusCode(400) && sandbox.end("Bad request");
         var twitter = new (sandbox.context.require("apps/oauth/lib/twitter.js"));
         twitter.init(sandbox);
 		var options = {};
