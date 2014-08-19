@@ -38,7 +38,7 @@ gereji.extend('sync', {
         try{
             this.transport.onreadystatechange = function(){
 				var xhr = arguments[0].target;
-				xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400 && args.complete(xhr.responseText);
+				xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400 && args.complete(xhr.responseText, xhr);
 			};
             this.transport.open(args.method, args.uri, this.options);
 			for(var i in this.headers){

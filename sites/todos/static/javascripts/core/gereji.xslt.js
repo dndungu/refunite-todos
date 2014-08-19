@@ -23,7 +23,8 @@ gereji.extend('xslt', {
 	fetch: function(){
 		var url = "/static/" + this.options.type + "/" + this.options.name + ".xsl";
 		var that = this;
-		this.sync.get(url, function(xsl){
+		this.sync.get(url, function(xsl, xhr){
+			console.log(xhr.responseXML);
 			that.xsl = xsl;
 			var templates = that.storage.get("templates");
 			templates[that.name] = xsl;
