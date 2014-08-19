@@ -85,7 +85,7 @@ gereji.extend('sync', {
         try{
             this.transport.onreadystatechange = function(){
 				var xhr = arguments[0].target;
-				xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400 && args.complete(xhr.responseText, xhr);
+				xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400 && args.complete(xhr.responseText);
 			};
             this.transport.open(args.method, args.uri, this.options);
 			for(var i in this.headers){
@@ -679,8 +679,8 @@ gereji.extend('xslt', {
 	fetch: function(){
 		var url = "/static/" + this.options.type + "/" + this.options.name + ".xsl";
 		var that = this;
-		this.sync.get(url, function(xsl, xhr){
-			that.xsl = xhr.responseXML;
+		this.sync.get(url, function(xsl){
+			that.xsl = xsl;
 			var templates = that.storage.get("templates");
 			templates[that.name] = that.xsl;
 			that.storage.set("templates", templates);
@@ -690,7 +690,7 @@ gereji.extend('xslt', {
 	},
 	transform: function(data){
 		try{
-//			this.style = this.parse(this.xsl);
+			this.style = this.parse(this.xsl);
 			this.processor.importStylesheet(this.xsl);
 			this.xml = this.json2xml({data : data});
 			this.doc = this.parse(this.xml);
