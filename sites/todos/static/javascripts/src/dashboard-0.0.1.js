@@ -723,7 +723,7 @@ gereji.extend('xslt', {
 	},
 	parse: function(){
 		try{
-			var doc = document.implementation.createDocument("", "xml", null);
+			var doc = document.implementation.createHTMLDocument("");
 			doc.documentElement.innerHTML = arguments[0];
 			return doc;
 		}catch(e){
