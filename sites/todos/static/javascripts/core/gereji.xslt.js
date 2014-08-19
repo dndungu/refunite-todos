@@ -28,7 +28,7 @@ gereji.extend('xslt', {
 			var templates = that.storage.get("templates");
 			templates[that.name] = that.xsl;
 			that.storage.set("templates", templates);
-			that.broker.emit({type: "update", data: null});
+			that.broker.emit({type: "update", data: {}});
 		});
 		return this;
 	},
