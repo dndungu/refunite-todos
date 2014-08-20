@@ -35,8 +35,9 @@ module.exports = function(){
 			var model = this.schema.getModel();
 			var rules = this.schema.getValidationRules();
 			request.on("end", function(){
-				var json = request.headers['content-type'] == "application/json";
-				var data = json ? JSON.parse(buffer.join()) : querystring.parse(buffer.join());
+//				var json = request.headers['content-type'] == "application/json";
+//				var data = json ? JSON.parse(buffer.join()) : querystring.parse(buffer.join());
+				var data = JSON.parse(buffer.join());
 				that.data = that.generate(that.filter(data, model), model);
 //				that.valid = that.validate(that.data, rules, model);
 				then(that.data);
